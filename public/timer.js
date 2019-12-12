@@ -50,3 +50,9 @@ function timerStart() {
         };
     }
 };
+
+function resetTimer() {
+    var timer = document.getElementById("time1");
+    window.clearTimeout(timer);
+    timerStart();
+}
