@@ -17,6 +17,11 @@
         </header>
         <div id="timerBox">
             <br>
+            <span>Preset minute times:</span><br>
+            <button onclick="popTime30()" value="30">30</button>
+            <button onclick="popTime35()" id="popNum35" value="35">35</button>
+            <button onclick="popTime50()" id="popNum50" value="50">50</button>
+            <button onclick="popTime170()" id="popNum170" value="170">170</button><br><br>
             <span>Set Time (minutes): </span><input type="number" id="timeNum"><br><br>
             <span>Timer Name: </span><input type="text" id="timerName"><br><br>
             <button onclick="timerStart()">Start Timer</button><br><br><br>

@@ -1,3 +1,20 @@
+function popTime30() {
+    document.getElementById('timeNum').value = 30;
+}
+
+function popTime35() {
+    document.getElementById('timeNum').value = 35;
+}
+
+function popTime50() {
+    document.getElementById('timeNum').value = 50;
+}
+
+function popTime170() {
+    document.getElementById('timeNum').value = 170;
+}
+
+
 //https://jsfiddle.net/robbmj/vpq5toeq/4/
 function timerStart() {
     var display = document.querySelector('#time1');
