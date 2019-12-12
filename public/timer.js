@@ -1,3 +1,5 @@
+var timer;
+
 function popTime30() {
     document.getElementById('timeNum').value = 30;
 }
@@ -21,7 +23,7 @@ function timerStart() {
     var timeSet = document.querySelector('#timeNum').value;
     var timerName = document.querySelector('#timerName').value;
     // var timer = new CountDownTimer(timeSet * 60);
-    var timer = new CountDownTimer(timeSet);    
+    timer = new CountDownTimer(timeSet);    
 
     timer.onTick(format(display)).onTick(restart).start();
 
@@ -52,7 +54,6 @@ function timerStart() {
 };
 
 function resetTimer() {
-    var timer = document.getElementById("time1");
-    window.clearTimeout(timer);
+    timer.tickFtns = [];
     timerStart();
 }
