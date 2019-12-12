@@ -1,6 +1,5 @@
 header {
     background-color: #ABADB1;
-    display: block;
 }
 
 html, body {
@@ -17,7 +16,7 @@ div {
 }
 
 input {
-    font-size: 1.5em;
+    font-size: .5em;
 }
 
 
@@ -26,9 +25,16 @@ h1,h2,h3,h4,h5,h6 {
     text-align: left;
 }
 
+h1 {
+    font-size: 2em;
+    position: absolute;
+    left: 150px;
+    top: 10px;
+}
+
 span {
     font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1em;
+    font-size: .5em;
 }
 
 
@@ -37,7 +43,7 @@ button {
     color: white;
     padding: 15px 15px 15px 15px;
     border: none;
-    font-size: 1.5em;
+    font-size: .5em;
     border-radius: 20px;
 }
 
@@ -50,12 +56,13 @@ button {
 /* # */
 
 #logo {
-    width: 15%;
+    width: 25%;
     height: auto;
     color: white;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 5px;
     text-align: left;
+    margin-bottom: 5px;
 }
 
 #timerBox {
@@ -64,5 +71,24 @@ button {
 
 #time1,#time2,#time3,#time4 {
     font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
-    font-size: 3em;
+    font-size: 2em;
+}
+
+@media screen and (min-width: 900px) {
+    #logo {
+        width: 7%;
+    }
+    #time1,#time2,#time3,#time4 {
+        font-size: 2em;
+    }
+
+    span,input,button {
+        font-size: .5em;
+    }
+
+    h1 {
+        position: absolute;
+        left: 150px;
+        top: 20px;
+    }
 }
