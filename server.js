@@ -3,8 +3,16 @@ var port = process.env.PORT || 5000;
 
 var app = express();
 
-app.get(‘/’, function (req, res) {
-});
+app.use(express.static("public"));
+app.use(express.json() );
+
 app.listen(port, function () {
- console.log(`Example app listening on port !`);
+ console.log('App listening on port ' + port);
 });
+
+app.get('/', function (req, res) {
+    console.log("Received a request for /");
+  });
+
+//functions
+
