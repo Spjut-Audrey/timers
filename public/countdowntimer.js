@@ -19,7 +19,11 @@ CountDownTimer.prototype.start = function() {
 
   (function timer() {
     diff = that.duration - (((Date.now() - start) / 1000) | 0);
-    
+    // if(pauseTimeout()) {
+    //     timeLeft -= new Date() - startTimeout;
+    //     clearTimeout(timer);
+    // }
+
     if (diff > 0) {
       setTimeout(timer, that.granularity);
     } else {
@@ -30,7 +34,7 @@ CountDownTimer.prototype.start = function() {
     }
 
     obj = CountDownTimer.parse(diff);
-    console.log(obj);
+    // console.log(obj);
     that.tickFtns.forEach(function(ftn) {
       ftn.call(this, obj.minutes, obj.seconds);
     }, that);
