@@ -1,3 +1,4 @@
+//set global timer
 var timer;
 
 function popTime30() {
@@ -54,6 +55,18 @@ function timerStart() {
 };
 
 function resetTimer() {
+    //set ticks to 0 to "delete"
     timer.tickFtns = [];
     timerStart();
+}
+
+function pauseTimer() {
+    //get current ticks
+    var currentTicks = timer.tickFtns;
+
+    //freeze or "delete"? ticks probs bad idea
+    timer.tickFtns = [];
+
+    //pass ticks to timer start?
+    timer = currentTicks;
 }
