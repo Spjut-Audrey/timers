@@ -1,0 +1,68 @@
+header {
+    background-color: #ABADB1;
+    display: block;
+}
+
+html, body {
+    margin: 0; 
+    padding: 0;
+}
+
+div {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2em;
+}
+
+input {
+    font-size: 1.5em;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    text-align: left;
+}
+
+span {
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1em;
+}
+
+
+button {
+    background-color: #4F7562;
+    color: white;
+    padding: 15px 15px 15px 15px;
+    border: none;
+    font-size: 1.5em;
+    border-radius: 20px;
+}
+
+/* . */
+
+.negative {
+    color: red;
+}
+
+/* # */
+
+#logo {
+    width: 15%;
+    height: auto;
+    color: white;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: left;
+}
+
+#timerBox {
+    margin-left: 10px;
+}
+
+#time1,#time2,#time3,#time4 {
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3em;
+}
