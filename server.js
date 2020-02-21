@@ -12,6 +12,7 @@ app.listen(port, function () {
 
 app.get('/', function (req, res) {
     console.log("Received a request for /");
+    res.redirect('timer.html')
   });
 
 //functions
