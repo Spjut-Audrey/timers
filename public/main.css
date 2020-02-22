@@ -75,6 +75,15 @@ button {
     font-size: 2em;
 }
 
+.timer {
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-size: 4em;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 @media screen and (min-width: 900px) {
     #logo {
         width: 7%;

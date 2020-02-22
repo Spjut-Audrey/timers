@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Round Timer</title>
+        <script src="atimer.js"></script>
+        <script>
+            function startTimer() {
+                timer.start(); 
+                document.getElementById('startButton').classList.add('hidden'); 
+                document.getElementById('restartButton').classList.remove('hidden');
+                document.getElementById('pauseButton').classList.remove('hidden');
+            }
+            function restartTimer() {
+                timer.restart();
+                document.getElementById('resumeButton').classList.add('hidden');
+                document.getElementById('pauseButton').classList.remove('hidden');
+            }
+            function pauseTimer() {
+                timer.pause(); 
+                document.getElementById('resumeButton').classList.remove('hidden');
+                document.getElementById('pauseButton').classList.add('hidden');
+            }
+            function resumeTimer() {
+                timer.resume(); 
+                document.getElementById('resumeButton').classList.add('hidden');
+                document.getElementById('pauseButton').classList.remove('hidden');
+            }
+        </script>
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <dive id="timerBox">
+            <button onclick="startTimer()" id="startButton">Start</button>
+            <button onclick="restartTimer()" class="hidden" id="restartButton">Restart</button>
+            <button onclick="pauseTimer()" class="hidden" id="pauseButton">Pause</button>
+            <button onclick="resumeTimer()" class="hidden" id="resumeButton">Resume</button>
+            <div id="timerName" class="timer"></div>
+            <div id="timer" class="timer"></div>
+        </dive>
+    </body>
+    <script>
+        // Default values
+        timerName = 'A timer';
+        timerDuration = 3;
+        startTime = Date.now();
+        running = false;
+
+        // Check GET request for settings
+        query = window.location.search.substring(1);
+        vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+            keyval = vars[i].split('=');
+            
+            // replace defaults
+            if (keyval[0] == 'name') {
+                timerName = keyval[1];
+            }
+            if (keyval[0] == 'duration') {
+                timerDuration = parseFloat(keyval[1]);
+            }
+
+            if (keyval[0] == 'startTime') {
+                startTime = parseInt(keyval[1]);
+                // If a start time is set, assume it's paused unless already saw running
+                if (!document.getElementById('startButton').classList.contains('hidden')) {
+                    document.getElementById('resumeButton').classList.remove('hidden');
+                    document.getElementById('pauseButton').classList.add('hidden');
+                    document.getElementById('startButton').classList.add('hidden'); 
+                    document.getElementById('restartButton').classList.remove('hidden');
+                }
+            }
+            if (keyval[0] == 'running') {
+                if (keyval[1] == 'true') {
+                    // Timer is running
+                    running = true;
+                    // Adjust button showing
+                    document.getElementById('startButton').classList.add('hidden'); 
+                    document.getElementById('restartButton').classList.remove('hidden');
+                    document.getElementById('pauseButton').classList.remove('hidden');
+                }
+            }
+        }
+
+        timer = new AtomicTimer(timerDuration, timerName, startTime, running);
+        console.log(timer);
+
+        function displayTime(seconds) {
+            minutes = Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            // Add leading 0s
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            return '' + minutes + ':' + seconds;
+        }
+
+        // Set up the timer display and set an interval to refresh the displayed value
+        timerDiv = document.getElementById('timer');
+        timerNameDiv = document.getElementById('timerName');
+        timerUpdateInterval = 300; // in ms
+        setInterval(function(){
+            remainingTime = timer.getRemainingTime();
+
+            // Set negative class if past time
+            if (remainingTime < 0) {
+                timerDiv.classList.add('negative');
+            } else {
+                timerDiv.classList.remove('negative');
+            }
+            timerNameDiv.textContent = timer.name;
+            timerDiv.textContent = displayTime(Math.abs(remainingTime));
+        }, timerUpdateInterval);
+    </script>
+</html>
