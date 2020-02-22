@@ -97,3 +97,7 @@ button {
         top: 20px;
     }
 }
+
+button#pause {
+    width: 90px;
+}
