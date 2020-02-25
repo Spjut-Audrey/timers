@@ -82,3 +82,6 @@ class AtomicTimer {
         return Math.round(remainingTime);
     }
 }
+
+// allow it to be included in the server
+if (module) module.exports = AtomicTimer;
